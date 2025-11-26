@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan de Gestión de Configuración - App Gestión Dormitorios HVU-ULV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan de Gestión de Configuración del software para la App Gestión Dormitorios HVU-ULV">
+    <meta name="author" content="Equipo DUMAG Desarrolladora">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem 10%;
+            background-color: #f9f9f9;
+            color: #222;
+        }
+        h1, h2, h3, h4 {
+            color: #222;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 0.2rem;
+        }
+        .subtitle, .date, .authors {
+            text-align: center;
+            margin: 0.15rem 0;
+        }
+        hr {
+            margin: 2rem 0;
+        }
+        p {
+            margin-bottom: 0.6rem;
+        }
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+        .section-title {
+            margin-top: 2.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #ffffff;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 0.5rem;
+            vertical-align: top;
+        }
+        thead tr {
+            background: #eaeaea;
+        }
+        th {
+            text-align: left;
+        }
+        .small-note {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        code {
+            font-family: "Courier New", monospace;
+            background: #f1f1f1;
+            padding: 0.15rem 0.3rem;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Portada -->
+    <h1>Plan de Gestión de Configuración</h1>
+    <p class="subtitle">App Gestión Dormitorios HVU-ULV</p>
+    <p class="authors"><strong>Proyecto Final - Arquitectura y Calidad de Software</strong></p>
+    <p class="date">Versión 1.0 – 2025</p>
+
+    <hr>
+
+    <!-- 1. Introducción -->
+    <h2 class="section-title">1. Introducción</h2>
+
+    <h3>1.1 Propósito</h3>
+    <p>
+        El presente documento define el <strong>Plan de Gestión de Configuración</strong> para la aplicación 
+        <strong>Gestión Dormitorios HVU-ULV</strong>, una solución móvil desarrollada en Flutter para 
+        <strong>Android e iOS</strong>, con un backend en <strong>Node.js/Express</strong> y una base de datos 
+        en <strong>SQL Server</strong>.
+    </p>
+    <p>
+        El objetivo de este plan es establecer los procesos, responsabilidades, herramientas y convenciones 
+        que se utilizarán para administrar los elementos de configuración del software, incluyendo:
+    </p>
+    <ul>
+        <li>Código fuente de la aplicación móvil (Flutter: Android / iOS).</li>
+        <li>Código fuente del backend (Node.js/Express).</li>
+        <li>Scripts y estructura de la base de datos (SQL Server).</li>
+        <li>Artefactos de documentación (SRS, arquitectura, pruebas, manuales, etc.).</li>
+        <li>Archivos de configuración de entornos y despliegue.</li>
+    </ul>
+    <p>
+        Este plan busca asegurar que todas las versiones, cambios y entornos del sistema se gestionen 
+        de manera controlada, trazable y coherente a lo largo del ciclo de vida del proyecto.
+    </p>
+
+    <h3>1.2 Alcance</h3>
+    <p>
+        El Plan de Gestión de Configuración aplica a todos los artefactos de software y documentación 
+        relacionados con la App Gestión Dormitorios HVU-ULV, incluyendo:
+    </p>
+    <ul>
+        <li>Repositorio del <strong>frontend Flutter</strong> (Android e iOS).</li>
+        <li>Repositorio del <strong>backend Node.js/Express</strong>.</li>
+        <li>Scripts y esquemas de <strong>base de datos SQL Server</strong>.</li>
+        <li>Documentos de análisis, diseño, pruebas y manuales.</li>
+        <li>Archivos de configuración para entornos de desarrollo, pruebas y producción.</li>
+    </ul>
+    <p>
+        El plan se aplicará durante todo el ciclo de vida del proyecto, desde el desarrollo inicial, 
+        pasando por las pruebas y entrega del proyecto final, hasta los posibles mantenimientos posteriores 
+        que se realicen en el contexto académico.
+    </p>
+
+    <h3>1.3 Referencias</h3>
+    <ul>
+        <li>Especificación de Requisitos de Software (SRS) – App Gestión Dormitorios HVU-ULV.</li>
+        <li>Documento de Arquitectura de Software – App Gestión Dormitorios HVU-ULV.</li>
+        <li>Plan de Pruebas y Documentación de Pruebas del sistema.</li>
+        <li>Guías de buenas prácticas de control de versiones con Git y GitHub.</li>
+        <li>Normas ISO/IEC relacionadas con calidad y gestión de configuración de software.</li>
+    </ul>
+
+    <!-- 2. Contexto del Proyecto -->
+    <h2 class="section-title">2. Contexto del Proyecto</h2>
+    <p>
+        La App Gestión Dormitorios HVU-ULV es una solución que permite administrar procesos clave del 
+        <strong>Hogar de Varones Universitarios</strong>, tales como:
+    </p>
+    <ul>
+        <li>Registro de asistencia mediante códigos QR a cultos y actividades.</li>
+        <li>Evaluaciones de limpieza por cuarto y pasillo.</li>
+        <li>Gestión de reportes disciplinarios y amonestaciones.</li>
+        <li>Asignación y administración de monitores.</li>
+        <li>Consultas administrativas para estudiantes, monitores y preceptor.</li>
+    </ul>
+    <p>
+        La solución se compone de:
+    </p>
+    <ul>
+        <li>Una aplicación móvil multiplataforma desarrollada en <strong>Flutter</strong> (Android e iOS).</li>
+        <li>Una API REST desarrollada en <strong>Node.js/Express</strong>.</li>
+        <li>Una base de datos centralizada en <strong>SQL Server</strong>.</li>
+    </ul>
+    <p>
+        Dado que se trata de un proyecto final académico, pero con una arquitectura cercana a un entorno real, 
+        es indispensable gestionar la configuración del sistema con disciplina, para evitar inconsistencias 
+        entre versiones de código, documentos, scripts y entornos.
+    </p>
+
+    <!-- 3. Roles y Responsabilidades -->
+    <h2 class="section-title">3. Roles y Responsabilidades en la Gestión de Configuración</h2>
+    <p>
+        A continuación se describen los roles relacionados con la gestión de configuración del proyecto y sus responsabilidades.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rol</th>
+                <th>Responsabilidades principales en gestión de configuración</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Responsable de Configuración (Líder de Configuración)</strong></td>
+                <td>
+                    <ul>
+                        <li>Definir y mantener este Plan de Gestión de Configuración.</li>
+                        <li>Administrar los repositorios de GitHub (frontend y backend).</li>
+                        <li>Aprobar la creación de ramas principales y reglas de protección.</li>
+                        <li>Coordinar la numeración de versiones del sistema.</li>
+                        <li>Supervisar los registros de cambios (changelogs).</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Desarrolladores de Frontend</strong></td>
+                <td>
+                    <ul>
+                        <li>Trabajar en ramas de desarrollo/funcionalidad definidas.</li>
+                        <li>Seguir las convenciones de nombres de commits y ramas.</li>
+                        <li>Actualizar documentación técnica relacionada con la app móvil.</li>
+                        <li>Notificar cambios relevantes al Responsable de Configuración.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Desarrolladores de Backend</strong></td>
+                <td>
+                    <ul>
+                        <li>Trabajar en ramas de servicios, endpoints y correcciones.</li>
+                        <li>Mantener sincronizados los cambios de la API con la documentación.</li>
+                        <li>Versionar scripts de base de datos y migraciones.</li>
+                        <li>Informar cambios que impacten en otras capas (Flutter / BD).</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Responsable de Base de Datos</strong></td>
+                <td>
+                    <ul>
+                        <li>Gestionar los scripts de creación y actualización de la BD.</li>
+                        <li>Asegurar que los cambios en tablas, llaves y catálogos estén versionados.</li>
+                        <li>Coordinar con backend las migraciones y ajustes de esquema.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Responsable de Pruebas / QA</strong></td>
+                <td>
+                    <ul>
+                        <li>Verificar que la versión probada corresponda a una etiqueta (tag) específica.</li>
+                        <li>Registrar los resultados de pruebas asociados a versiones concretas.</li>
+                        <li>Notificar defectos mediante issues en GitHub, referenciando commits o ramas.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Profesor / Revisor Académico</strong></td>
+                <td>
+                    <ul>
+                        <li>Revisar la consistencia entre artefactos (código, arquitectura, pruebas y documentación).</li>
+                        <li>Validar que las versiones entregadas correspondan al alcance definido.</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 4. Elementos de Configuración -->
+    <h2 class="section-title">4. Elementos de Configuración (EC)</h2>
+    <p>
+        Los <strong>Elementos de Configuración (EC)</strong> son los artefactos que se gestionan explícitamente 
+        bajo control de configuración. Para la App Gestión Dormitorios HVU-ULV, se consideran EC los siguientes:
+    </p>
+
+    <h3>4.1 Clasificación de Elementos de Configuración</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Ejemplos de EC</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Código fuente – Frontend</strong></td>
+                <td>
+                    <ul>
+                        <li>Proyecto Flutter (Android e iOS).</li>
+                        <li>Pantallas (screens) de login, dashboard, limpieza, reportes, asistencia, etc.</li>
+                        <li>Widgets compartidos, providers, servicios HTTP.</li>
+                        <li>Archivos de configuración <code>pubspec.yaml</code>, <code>build.gradle</code>, etc.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Código fuente – Backend</strong></td>
+                <td>
+                    <ul>
+                        <li>Proyecto Node.js/Express.</li>
+                        <li>Rutas (<code>/api/auth</code>, <code>/api/limpieza</code>, <code>/api/reportes</code>, etc.).</li>
+                        <li>Controladores, servicios y capa DAL.</li>
+                        <li>Archivo de configuración <code>.env</code> (no se sube al repo, pero se maneja como plantilla).</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Base de Datos</strong></td>
+                <td>
+                    <ul>
+                        <li>Scripts de creación de esquema en SQL Server.</li>
+                        <li>Scripts de inserción de datos iniciales (catálogos).</li>
+                        <li>Scripts de migración entre versiones de esquema.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Documentación</strong></td>
+                <td>
+                    <ul>
+                        <li>Especificación de requisitos (SRS).</li>
+                        <li>Documento de arquitectura de software.</li>
+                        <li>Plan de pruebas y documentación de resultados.</li>
+                        <li>Manual de usuario y manual técnico.</li>
+                        <li>Plan de gestión de configuración (este documento).</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Configuración de entornos</strong></td>
+                <td>
+                    <ul>
+                        <li>Archivos de variables de entorno para desarrollo, pruebas y producción.</li>
+                        <li>Configuración de conexión a la base de datos.</li>
+                        <li>Archivos de configuración de despliegue (por ejemplo, scripts de publicación).</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>4.2 Identificación y Nomenclatura de Elementos</h3>
+    <p>
+        Para garantizar la trazabilidad, los elementos de configuración se identificarán mediante convenciones 
+        de nombres y estructuras de carpetas claras. Algunos ejemplos:
+    </p>
+    <ul>
+        <li><strong>Repositorio frontend:</strong> <code>hvu-app-frontend</code></li>
+        <li><strong>Repositorio backend:</strong> <code>hvu-app-backend</code></li>
+        <li><strong>Carpeta de documentación:</strong> <code>docs/</code> dentro de un repositorio agregado o en un repositorio separado.</li>
+        <li><strong>Scripts BD:</strong> <code>db/scripts/01_create_schema.sql</code>, <code>db/scripts/02_seed_catalogs.sql</code></li>
+        <li><strong>Documentos:</strong> <code>docs/01_SRS_HVU.pdf</code>, <code>docs/02_Arquitectura_HVU.pdf</code>, 
+            <code>docs/03_Plan_Pruebas_HVU.pdf</code>, <code>docs/04_Plan_Config_HVU.html</code></li>
+    </ul>
+    <p>
+        La identificación de versiones se realizará principalmente mediante etiquetas (tags) en Git, 
+        siguiendo un esquema de versionado definido en la sección 6 de este documento.
+    </p>
+
+    <!-- 5. Herramientas de Gestión de Configuración -->
+    <h2 class="section-title">5. Herramientas de Gestión de Configuración</h2>
+    <p>
+        La gestión de configuración de la App Gestión Dormitorios HVU-ULV utilizará principalmente las siguientes herramientas:
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Herramienta</th>
+                <th>Uso principal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Git</strong></td>
+                <td>
+                    <ul>
+                        <li>Control de versiones distribuido para código y documentos.</li>
+                        <li>Manejo de ramas, fusiones (merge) y etiquetas (tags).</li>
+                        <li>Historial de cambios por archivo y por desarrollador.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>GitHub</strong></td>
+                <td>
+                    <ul>
+                        <li>Alojamiento de los repositorios frontend, backend y documentación.</li>
+                        <li>Gestión de issues para reportar defectos y tareas.</li>
+                        <li>Pull requests para revisión de código antes de integrar cambios a ramas principales.</li>
+                        <li>Protección de la rama <code>main</code> o <code>master</code> para evitar cambios directos.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>GitHub Projects / Tablero Kanban</strong> (opcional)</td>
+                <td>
+                    <ul>
+                        <li>Organización de tareas de desarrollo, pruebas y documentación.</li>
+                        <li>Asignación de responsables y seguimiento del estado de cada tarea.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Entorno de Desarrollo</strong> (VS Code, Android Studio, Xcode)</td>
+                <td>
+                    <ul>
+                        <li>Edición y compilación de la app Flutter para Android e iOS.</li>
+                        <li>Desarrollo y depuración del backend Node.js.</li>
+                        <li>Integración con Git para commits y manejo de ramas.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>SQL Server Management Studio (SSMS)</strong></td>
+                <td>
+                    <ul>
+                        <li>Gestión de la base de datos, ejecución de scripts y verificación de estructura.</li>
+                        <li>Exportación/importación de esquemas y datos iniciales.</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        El uso disciplinado de estas herramientas es obligatorio para todo cambio en el sistema. 
+        No se permitirá modificar directamente código en producción o en ramas protegidas sin seguir 
+        el flujo de trabajo establecido en este plan.
+    </p>
+
+    <!-- FIN PARTE 1 -->
