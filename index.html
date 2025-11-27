@@ -227,16 +227,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>Profesor / Revisor Académico</strong></td>
-                <td>
-                    <ul>
-                        <li>Revisar la consistencia entre artefactos (código, arquitectura, pruebas y documentación).</li>
-                        <li>Validar que las versiones entregadas correspondan al alcance definido.</li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                
 
     <!-- 4. Elementos de Configuración -->
     <h2 class="section-title">4. Elementos de Configuración (EC)</h2>
@@ -256,7 +247,7 @@
         </thead>
         <tbody>
             <tr>
-                <td><strong>Código fuente – Frontend</strong></td>
+                <td><strong>Código fuente y Frontend</strong></td>
                 <td>
                     <ul>
                         <li>Proyecto Flutter (Android e iOS).</li>
@@ -267,7 +258,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>Código fuente – Backend</strong></td>
+                <td><strong>Código fuente y Backend</strong></td>
                 <td>
                     <ul>
                         <li>Proyecto Node.js/Express.</li>
@@ -403,3 +394,253 @@
     </p>
 
     <!-- FIN PARTE 1 -->
+
+
+
+
+
+                    <!-- 6. Control de Versiones -->
+    <h2 class="section-title">6. Control de Versiones</h2>
+    <p>
+        El control de versiones es fundamental para mantener la trazabilidad, integridad y coherencia del software
+        durante su ciclo de vida. El proyecto utilizará Git con repositorios separados para frontend, backend y 
+        documentación.
+    </p>
+
+    <h3>6.1 Esquema de Versionado Semántico</h3>
+    <p>
+        El sistema usará el estándar <strong>Versionado Semántico (Semantic Versioning)</strong> con la convención:
+    </p>
+    <pre><code>MAJOR.MINOR.PATCH</code></pre>
+
+    <ul>
+        <li><strong>MAJOR:</strong> Cambios que rompen compatibilidad o introducen una arquitectura nueva.</li>
+        <li><strong>MINOR:</strong> Nuevas funcionalidades sin romper compatibilidad.</li>
+        <li><strong>PATCH:</strong> Correcciones de errores y mejoras pequeñas.</li>
+    </ul>
+
+    <p>Ejemplos:</p>
+    <ul>
+        <li><code>1.0.0</code> — Primera versión estable del proyecto.</li>
+        <li><code>1.1.0</code> — Agrega la funcionalidad de amonestaciones.</li>
+        <li><code>1.1.2</code> — Corrección de errores menores en asistencia.</li>
+    </ul>
+
+    <h3>6.2 Convenciones de Nombres en Ramas Git</h3>
+    <p>Las ramas se estructurarán de la siguiente manera:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo de rama</th>
+                <th>Formato</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Principal</strong></td>
+                <td><code>main</code></td>
+                <td>Contiene solo versiones estables etiquetadas. Protegida.</td>
+            </tr>
+            <tr>
+                <td><strong>Desarrollo</strong></td>
+                <td><code>develop</code></td>
+                <td>Integración de funcionalidades antes de fusiones a producción.</td>
+            </tr>
+            <tr>
+                <td><strong>Funcionalidad</strong></td>
+                <td><code>feature/nombre-funcion</code></td>
+                <td>Desarrollo de nuevas funciones.</td>
+            </tr>
+            <tr>
+                <td><strong>Corrección</strong></td>
+                <td><code>fix/nombre-bug</code></td>
+                <td>Correcciones específicas.</td>
+            </tr>
+            <tr>
+                <td><strong>Documentación</strong></td>
+                <td><code>docs/nombre-doc</code></td>
+                <td>Actualizaciones de manuales, SRS, arquitectura, pruebas.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>6.3 Convención de Mensajes de Commit</h3>
+    <p>Los commits deben ser claros y seguir este formato:</p>
+
+    <pre><code>[tipo]: descripción breve</code></pre>
+
+    Tipos permitidos:
+
+    <ul>
+        <li><strong>feat:</strong> nueva funcionalidad</li>
+        <li><strong>fix:</strong> corrección de error</li>
+        <li><strong>docs:</strong> documentación</li>
+        <li><strong>style:</strong> estética (no afecta funcionalidad)</li>
+        <li><strong>refactor:</strong> reestructuración sin cambio funcional</li>
+        <li><strong>test:</strong> pruebas</li>
+        <li><strong>config:</strong> archivos de configuración</li>
+    </ul>
+
+    <p>Ejemplo:</p>
+    <pre><code>feat: agregar pantalla de estadísticas para estudiantes</code></pre>
+
+    <!-- 7. Procedimiento de Control de Cambios -->
+    <h2 class="section-title">7. Procedimiento de Control de Cambios</h2>
+
+    <p>Los cambios seguirán un flujo estructurado para garantizar calidad y trazabilidad:</p>
+
+    <h3>7.1 Solicitud de Cambio (Issue)</h3>
+    <p>Cualquier cambio debe registrarse como <strong>Issue en GitHub</strong> con la siguiente información:</p>
+    <ul>
+        <li>Descripción del cambio o problema.</li>
+        <li>Archivo(s) o módulo(s) involucrados.</li>
+        <li>Impacto esperado en el sistema.</li>
+        <li>Responsable asignado.</li>
+    </ul>
+
+    <h3>7.2 Desarrollo del Cambio</h3>
+    <p>El desarrollador:</p>
+    <ul>
+        <li>Crea una rama <code>feature/</code>, <code>fix/</code> o <code>docs/</code>.</li>
+        <li>Implementa el cambio.</li>
+        <li>Realiza commits siguiendo las convenciones.</li>
+    </ul>
+
+    <h3>7.3 Revisión (Pull Request)</h3>
+    <p>
+        Todos los cambios deben pasar por un <strong>Pull Request</strong> en GitHub.  
+        El responsable de configuración revisa:
+    </p>
+    <ul>
+        <li>Calidad del código.</li>
+        <li>Afectaciones a otros módulos.</li>
+        <li>Consistencia con arquitectura y requisitos.</li>
+    </ul>
+
+    <h3>7.4 Aprobación e Integración</h3>
+    <p>
+        Una vez aprobado el PR, se hace merge a la rama <code>develop</code> y, cuando sea una versión estable,
+        se fusiona a <code>main</code>.
+    </p>
+
+    <h3>7.5 Documentación del Cambio</h3>
+    <p>Todo cambio debe registrarse en un archivo <strong>CHANGELOG.md</strong> con el siguiente formato:</p>
+
+    <pre><code>## [1.2.0] - 2025-11-20
+### Agregado
+- Nueva vista de reportes para preceptores.
+
+### Corregido
+- Error en el cálculo de calificación final de limpieza.</code></pre>
+
+    <!-- 8. Gestión de Entornos -->
+    <h2 class="section-title">8. Gestión de Entornos</h2>
+
+    <p>La aplicación cuenta con tres entornos principales:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Entorno</th>
+                <th>Descripción</th>
+                <th>Componentes involucrados</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Desarrollo (DEV)</strong></td>
+                <td>Entorno donde los desarrolladores prueban nuevas funciones.</td>
+                <td>Flutter, Node.js local, BD local o contenedor, variables <code>.env.dev</code>.</td>
+            </tr>
+            <tr>
+                <td><strong>Pruebas (TEST)</strong></td>
+                <td>Entorno para pruebas integrales y pruebas del plan de QA.</td>
+                <td>APK de pruebas, BD limpia, servidor de pruebas, <code>.env.test</code>.</td>
+            </tr>
+            <tr>
+                <td><strong>Producción (PROD)</strong></td>
+                <td>Versión final estable entregada al profesor y usada en demostraciones.</td>
+                <td>Build firmado Flutter, API estable, BD final, <code>.env.prod</code>.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>8.1 Gestión de Variables de Entorno</h3>
+    <p>
+        Las variables sensibles no deben subirse al repositorio.  
+        Se manejarán plantillas:
+    </p>
+    <ul>
+        <li><code>.env.example</code> (plantilla)</li>
+        <li><code>.env.dev</code></li>
+        <li><code>.env.test</code></li>
+        <li><code>.env.prod</code></li>
+    </ul>
+
+    <h3>8.2 Builds para Android e iOS</h3>
+    <p>
+        Flutter permite generar builds para ambos sistemas:
+    </p>
+    <ul>
+        <li><code>flutter build apk</code> — Android</li>
+        <li><code>flutter build ios</code> — iOS (desde macOS + Xcode)</li>
+    </ul>
+    <p>
+        Las versiones generadas deben almacenarse en:
+    </p>
+    <code>/releases/android/</code> y <code>/releases/ios/</code>.
+
+    <!-- 9. Auditorías de Configuración -->
+    <h2 class="section-title">9. Auditorías de Configuración</h2>
+
+    <h3>9.1 Auditoría Funcional</h3>
+    <p>Verifica que el sistema cumpla con los requisitos del SRS y arquitectura.</p>
+
+    <h3>9.2 Auditoría Física</h3>
+    <p>Verifica que la versión entregada contenga todos los artefactos definidos como EC.</p>
+
+    <h3>9.3 Auditoría de Registros</h3>
+    <p>Verifica que existan commits, PRs, issues, tags y changelogs completos.</p>
+
+    <!-- 10. Riesgos Asociados a la Configuración -->
+    <h2 class="section-title">10. Riesgos Asociados a la Configuración</h2>
+
+    <ul>
+        <li>Pérdida de sincronización entre frontend, backend y BD.</li>
+        <li>Eliminar o modificar código sin registrar un issue.</li>
+        <li>Hacer cambios directos en <code>main</code>.</li>
+        <li>No registrar versiones antes de pruebas o entregas.</li>
+        <li>Variables de entorno expuestas por error en el repositorio.</li>
+    </ul>
+
+    <!-- 11. Estrategias de Mitigación -->
+    <h2 class="section-title">11. Estrategias de Mitigación</h2>
+
+    <ul>
+        <li>Activar protección de la rama <code>main</code>.</li>
+        <li>Usar <strong>Pull Requests obligatorios</strong> con revisión.</li>
+        <li>Documentar todo en el changelog.</li>
+        <li>Usar scripts versionados para BD.</li>
+        <li>No compartir variables <code>.env</code> por medios no seguros.</li>
+        <li>Etiquetar versiones antes de pruebas y entregas.</li>
+    </ul>
+
+    <!-- 12. Conclusión -->
+    <h2 class="section-title">12. Conclusión</h2>
+    <p>
+        Este <strong>Plan de Gestión de Configuración</strong> garantiza que todo el ciclo de vida del proyecto 
+        se lleve a cabo con orden, trazabilidad y coherencia entre sus artefactos.  
+        La correcta aplicación del proceso permitirá que el software evolucione de manera controlada,
+        asegurando versiones estables, reproducibles y alineadas con los requisitos y la arquitectura definida.
+    </p>
+
+    <hr>
+    <p class="small-note">
+        Fin del Plan de Gestión de Configuración – App Gestión Dormitorios HVU-ULV.
+    </p>
+
+</body>
+</html>
+
